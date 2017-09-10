@@ -17,9 +17,9 @@ def generate_graph(themap):
     return G
 
 def plot_graph(G, plot_name):
+    plt.clf()
     nx.draw(G, with_labels=True)
     # plt.show()
-    plt.clf()
     plt.savefig('plots/'+plot_name,bbox_inches='tight')
 
 related_artists_map = save.load('data/related_artists_2017-09-06 01:22:34.989146.pickle')
