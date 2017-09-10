@@ -16,9 +16,11 @@ def generate_graph(themap):
     print("Number of edges: ",G.number_of_edges())
     return G
 
-def plot_graph(G):
+def plot_graph(G, plot_name):
     nx.draw(G, with_labels=True)
-    plt.show()
+    # plt.show()
+    plt.clf()
+    plt.savefig('plots/'+plot_name,bbox_inches='tight')
 
 related_artists_map = save.load('data/related_artists_2017-09-06 01:22:34.989146.pickle')
 G = generate_graph(related_artists_map)
@@ -28,14 +30,14 @@ graphs = list(nx.connected_component_subgraphs(G))
 print("Connected components: ",len(graphs))
 
 # # plot one of the graphs
-plot_graph(graphs[1])
+plot_graph(graphs[1], 'a_connected_component.png')
 
 # Eccentricity of a sample node:
 print('Eccentricity of Arcade fire node:',nx.eccentricity(graphs[0],'Arcade Fire'))
 
 # Get a node and all it's neighbors
 H = nx.ego_graph(G,'Arcade Fire',radius=1)
-plot_graph(H)
+plot_graph(H, 'ego_graph.png')
 
 # Get the shortest path between two nodes
 path = nx.shortest_path(G,source='Arcade Fire',target='Kendrick Lamar')
@@ -54,4 +56,4 @@ print([k for k,v in lengths.items() if v == max_path_length])
 GG = nx.relabel_nodes(G,{'Joey Bada$$':'Joey Badass'})
 paths = list(nx.all_simple_paths(GG,source='Arcade Fire',target='Kendrick Lamar',cutoff=6))
 vertices_in_path = [v for path in paths for v in path]
-plot_graph(GG.subgraph(vertices_in_path))
+plot_graph(GG.subgraph(vertices_in_path),'arcade_fire_to_kendrick.png')
