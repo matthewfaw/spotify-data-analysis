@@ -22,4 +22,4 @@ Install python requirements by running `pip install -r <Project Root>/requiremen
 
 ### Here are all paths of length at most 6 between Arcade Fire and Kendrick Lamar:
 This plot is particularly cool because it shows two tightly-connected clusters -- Indie music and Rap music.  These clusters are being connected by artists that fall somewhat between the two: Gorillaz and James Blake, for example.
-![All paths of length at most 6 between Arcade Fire and Kendrick Lamar](https://github.com/matthewfaw/spotify-data-analysis/blob/master/plots/a_connected_component.png)
+![All paths of length at most 6 between Arcade Fire and Kendrick Lamar](https://github.com/matthewfaw/spotify-data-analysis/blob/master/plots/arcade_fire_to_kendrick.png)
