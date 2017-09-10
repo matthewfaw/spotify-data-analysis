@@ -1,5 +1,7 @@
 *.swp
 .DS_Store
 *.log
-*.pickle
 *.pyc
+
+data/
+__pycache__/
