@@ -15,5 +15,5 @@ for doc in q.get_all_artists():
         related_artist_dict[artist] = sug.get_related_artists(artist_id=artist_id)
         genre_dict[artist] = genres.get_genres(info=info)
 
-save.save(related_artist_dict,'derp1')
-save.save(genre_dict,'derp2')
+save.save(related_artist_dict,'related_artists')
+save.save(genre_dict,'genres')
