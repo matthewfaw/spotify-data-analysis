@@ -14,5 +14,5 @@ def get_related_artists(artist_name='', artist_id=''):
     # return ret
     return [e['name'] for e in ret]
 
-# related = get_related_artists('Arcade Fire')
+# related = get_related_artists('Gorillaz')
 # print json.dumps(related,sort_keys=True,indent=4)

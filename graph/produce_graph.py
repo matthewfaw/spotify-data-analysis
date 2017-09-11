@@ -15,8 +15,8 @@ def generate_graph(themap):
     print("Number of edges: ",G.number_of_edges())
     return G
 
-def plot_graph(G, plot_name):
+def plot_graph(G, plot_name, pos=None):
     plt.clf()
-    nx.draw(G, with_labels=True)
+    nx.draw(G, with_labels=True, pos=pos)
     # plt.show()
     plt.savefig('plots/'+plot_name,bbox_inches='tight')
