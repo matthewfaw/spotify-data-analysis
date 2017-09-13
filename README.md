@@ -23,3 +23,9 @@ Install python requirements by running `pip3 install -r <Project Root>/requireme
 ### Here are all paths of length at most 6 between Arcade Fire and Kendrick Lamar:
 This plot is particularly cool because it shows two tightly-connected clusters -- Indie music and Rap music.  These clusters are being connected by artists that fall somewhat between the two: Gorillaz and James Blake, for example.
 ![All paths of length at most 6 between Arcade Fire and Kendrick Lamar](https://github.com/matthewfaw/spotify-data-analysis/blob/master/plots/arcade_fire_to_kendrick.png)
+
+### I can also look at the connected component (bipartite) subgraphs of Genre graphs
+Spotify typically says an artist falls under a handfull of genres.  By filtering the Genre graph by threshold
+totalNumberOfListens for artists, we can start to view somewhat meaningful genre groupings:
+![Indie rock subgraph](https://github.com/matthewfaw/spotify-data-analysis/blob/master/plots/genres_subgraph_0.png)
+![Rap subgraph](https://github.com/matthewfaw/spotify-data-analysis/blob/master/plots/genres_subgraph_1.png)
