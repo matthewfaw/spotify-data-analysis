@@ -1,4 +1,4 @@
-from artists import get_artist_info
+from .artists import get_artist_info
 
 def get_genres(artist_name='', info={}):
     if info == {}:

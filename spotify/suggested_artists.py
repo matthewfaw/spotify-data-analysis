@@ -1,6 +1,6 @@
 import json
-from setup_spotify_connection import get_spotify_query_object
-from artists import get_artist_info
+from .setup_spotify_connection import get_spotify_query_object
+from .artists import get_artist_info
 
 spotify = get_spotify_query_object()
 

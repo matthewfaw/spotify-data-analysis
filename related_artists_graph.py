@@ -1,6 +1,7 @@
 from serialize import save
 from graph import produce_graph as pg
 import networkx as nx
+from functools import reduce
 
 related_artists_map = save.load('related_artists_2017-09-06 01:22:34.989146')
 G = pg.generate_graph(related_artists_map)

@@ -1,4 +1,4 @@
-from ids import spotify_client_ids as creds
+from .ids import spotify_client_ids as creds
 from spotipy.oauth2 import SpotifyClientCredentials
 from spotipy import Spotify
 

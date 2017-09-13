@@ -6,7 +6,7 @@ experience :)
 
 ## Installation
 
-Install python requirements by running `pip install -r <Project Root>/requirements.txt`
+Install python requirements by running `pip3 install -r <Project Root>/requirements.txt`
 
 ## The analysis I've set up so far:
 

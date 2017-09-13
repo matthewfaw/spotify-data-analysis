@@ -1,4 +1,4 @@
-from setup_mongo_connection import get_songs_collection
+from .setup_mongo_connection import get_songs_collection
 
 mongo = get_songs_collection()
 

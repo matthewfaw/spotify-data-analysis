@@ -1,4 +1,4 @@
-from setup_spotify_connection import get_spotify_query_object
+from .setup_spotify_connection import get_spotify_query_object
 
 spotify = get_spotify_query_object()
 
