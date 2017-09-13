@@ -4,7 +4,12 @@ import networkx as nx
 import operator
 
 genres_map = save.load('genres_2017-09-11 01:33:42.733512')
+num_listens = save.load('total_number_of_listens_2017-09-13 00:33:36.633054')
+listening_history = save.load('listening_history_2017-09-13 00:33:36.631360')
+
 genres_map['Joey Badass'] = genres_map.pop('Joey Bada$$')
+num_listens['Joey Badass'] = num_listens.pop('Joey Bada$$')
+listening_history['Joey Badass'] = listening_history.pop('Joey Bada$$')
 
 all_genres = set([genre for genres in genres_map.values() for genre in genres])
 print('Number of genres: ',len(all_genres))
@@ -17,7 +22,17 @@ print('Number of connections: ', len(connections))
 B = nx.Graph()
 B.add_nodes_from(all_genres, bipartite=0)
 B.add_nodes_from(all_artists, bipartite=1)
-B.add_edges_from(connections)
+for artist, genres in genres_map.items():
+    for genre in genres:
+        B.add_edge(genre, artist, weight=num_listens[artist])
+
+# Filter the graph by edge weights
+# The idea behind this is to get a nicer understanding of the connected component subgraphs
+# Perhaps these subgraphs could act as a sort of equivalence relation on the genres...
+sigma = 100
+filtered_edges = [(u,v,d) for u,v,d in B.edges(data=True) if d['weight'] > sigma]
+B = nx.Graph()
+B.add_weighted_edges_from(filtered_edges)
 
 # Get number of connected components
 # The 0-labeled nodes can be thought of as genre clusters
@@ -41,6 +56,8 @@ l,r = nx.bipartite.sets(graphs[0])
 print('Number of genres in ccs1: ',len(l))
 print(l)
 
+
+# print all the subgraphs
 pos = {}
 pos.update((node,(1,index)) for index, node in enumerate(all_genres))
 pos.update((node,(2,index)) for index, node in enumerate(all_artists))
