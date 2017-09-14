@@ -52,7 +52,11 @@ for graph in graphs:
 sigmas = range(1,100)
 genre_cluster_counts = []
 for sigma in sigmas:
-    cluster_count = len(get_genre_clusters(create_genre_graph(genres_map, num_listens, sigma)))
+    G = create_genre_graph(genres_map,num_listens,sigma)
+    cluster_count = 0
+    for graph in get_connected_components(G):
+        if graph.number_of_edges() > 0:
+            cluster_count += len(get_genre_clusters(graph))
     genre_cluster_counts.append(cluster_count)
 plt.clf()
 plt.plot(sigmas, genre_cluster_counts)
