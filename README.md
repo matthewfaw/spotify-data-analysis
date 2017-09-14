@@ -29,3 +29,6 @@ Spotify typically says an artist falls under a handfull of genres.  By filtering
 totalNumberOfListens for artists, we can start to view somewhat meaningful genre groupings:
 ![Indie rock subgraph](https://github.com/matthewfaw/spotify-data-analysis/blob/master/plots/genres_subgraph_0.png)
 ![Rap subgraph](https://github.com/matthewfaw/spotify-data-analysis/blob/master/plots/genres_subgraph_1.png)
+
+### Minimum total number of listens vs number of genre clusters
+![listens_vs_clusters](https://github.com/matthewfaw/spotify-data-analysis/blob/master/plots/num_listens_vs_num_genre_clusters.png)
