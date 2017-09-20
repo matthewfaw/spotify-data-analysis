@@ -6,9 +6,9 @@ from graph.genre_graph_utils import decompose, get_genre_clusters, get_genre_deg
 import matplotlib.pyplot as plt
 
 # load up data
-genres_map = save.load('genres_2017-09-11 01:33:42.733512')
-num_listens = save.load('total_number_of_listens_2017-09-13 00:33:36.633054')
-listening_history = save.load('listening_history_2017-09-13 00:33:36.631360')
+genres_map = save.load('genres_2017-09-20 00:27:32.910281')
+num_listens = save.load('total_number_of_listens_2017-09-20 00:27:32.914297')
+listening_history = save.load('listening_history_2017-09-20 00:27:32.910782')
 
 # Clean up some entries that throw errors
 genres_map['Joey Badass'] = genres_map.pop('Joey Bada$$')
@@ -16,7 +16,8 @@ num_listens['Joey Badass'] = num_listens.pop('Joey Bada$$')
 listening_history['Joey Badass'] = listening_history.pop('Joey Bada$$')
 
 # Create the graph
-B = create_genre_graph(genres_map, num_listens, 100)
+# B = create_genre_graph(genres_map, num_listens, 100)
+B = create_genre_graph(genres_map, listening_history, num_listens, 100)
 
 # Get number of connected components
 # The 0-labeled nodes can be thought of as genre clusters

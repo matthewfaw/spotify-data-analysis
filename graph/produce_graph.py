@@ -44,6 +44,37 @@ def create_genre_graph(genres_map, num_listens, sigma):
     return B
 
 '''
+genres_map: ArtistName -> [GenreName]
+listening_history_dict: ArtistName -> [ListeningHistoryForDate]
+num_listens: ArtistName -> totalNumListens on spotify
+sigma: the edge weight filtering criterion
+
+Returns a bipartite graph where:
+    - left nodes are genres
+    - right nodes are artists
+    - edges connect artists to the genres under which they fall
+    - the is an edge for each date that I listened to an artist
+    - edge weights correspond to the total number of times I've listened 
+        to a given artist on the given date
+'''
+def create_genre_graph(genres_map, listening_history_dict, num_listens, sigma):
+    all_genres = set([genre for genres in genres_map.values() for genre in genres])
+    print('Number of genres: ',len(all_genres))
+    all_artists = genres_map.keys()
+    print('Number of artists: ', len(all_artists))
+    
+    B = nx.Graph()
+    B.add_nodes_from(all_genres, bipartite=0)
+    B.add_nodes_from(all_artists, bipartite=1)
+    for artist, genres in genres_map.items():
+        for genre in genres:
+            weight = num_listens[artist]
+            if weight > sigma:
+                for time_interval_history in listening_history_dict[artist]:
+                    B.add_edge(genre, artist, weight=time_interval_history['numListensOnDay'], date=time_interval_history['date'])
+    return B
+
+'''
 Get the connected component subgraphs of G
 '''
 def get_connected_components(G):

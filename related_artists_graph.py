@@ -3,7 +3,7 @@ from graph import produce_graph as pg
 import networkx as nx
 from functools import reduce
 
-related_artists_map = save.load('related_artists_2017-09-06 01:22:34.989146')
+related_artists_map = save.load('related_artists_2017-09-20 00:27:32.909349')
 G = pg.generate_graph(related_artists_map)
 
 # Get the connected components

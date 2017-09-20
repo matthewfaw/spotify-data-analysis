@@ -16,7 +16,7 @@ for doc in q.get_all_artists():
         artist_id = info['id']
         related_artist_dict[artist] = sug.get_related_artists(artist_id=artist_id)
         genre_dict[artist] = genres.get_genres(info=info)
-        listening_history_dict[artist] = doc['songs']
+        listening_history_dict[artist] = doc['infoOnDay']
         total_number_of_listens_dict[artist] = doc['totalNumListens']
 
 save.save(related_artist_dict,'related_artists')
